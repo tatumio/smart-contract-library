@@ -1,0 +1,11 @@
+{
+  "name": "smart-contract-library",
+  "version": "1.0.0",
+  "dependencies": {
+    "@openzeppelin/contracts": "4.8.3",
+    "sol-merger": "^4.4.0"
+  },
+  "scripts": {
+    "build-contracts": "sol-merger \\\"src/**/*.sol\\\" ./sources-for-verification"
+  }
+}
