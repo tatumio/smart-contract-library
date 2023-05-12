@@ -1898,7 +1898,10 @@ contract TatumErc721 is ERC721, ERC721URIStorage, ERC721Burnable, AccessControl,
 
     constructor(string memory name, string memory symbol, string memory baseURI, address admin, address minter) ERC721(name, symbol) {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
-        _grantRole(MINTER_ROLE, minter);
+        _grantRole(MINTER_ROLE, admin);
+        if (admin != minter) {
+            _grantRole(MINTER_ROLE, minter);
+        }
         transferOwnership(admin);
         _baseUri = baseURI;
     }

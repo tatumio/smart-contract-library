@@ -1467,10 +1467,13 @@ contract TatumErc20 is ERC20, ERC20PresetFixedSupply, Pausable, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     uint8 decimals_;
 
-    constructor(string memory name_, string memory symbol_, uint8 decimals__, uint256 initialSupply, address initialOwner, address admin, address minter, address pauser) ERC20PresetFixedSupply(name_, symbol_, initialSupply * 10^decimals_, initialOwner) {
+    constructor(string memory name_, string memory symbol_, uint8 decimals__, uint256 initialSupply, address initialOwner, address admin, address minter, address pauser) ERC20PresetFixedSupply(name_, symbol_, initialSupply, initialOwner) {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
+        _grantRole(MINTER_ROLE, admin);
+        if (admin != minter) {
+            _grantRole(MINTER_ROLE, minter);
+        }
         _grantRole(PAUSER_ROLE, pauser);
-        _grantRole(MINTER_ROLE, minter);
         decimals_ = decimals__;
     }
 

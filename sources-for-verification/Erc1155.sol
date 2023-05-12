@@ -1848,7 +1848,10 @@ contract TatumErc1155 is ERC1155, ERC1155Burnable, AccessControl, ERC1155URIStor
 
     constructor(address admin, address minter, string memory baseUri) ERC1155(baseUri) {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
-        _grantRole(MINTER_ROLE, minter);
+        _grantRole(MINTER_ROLE, admin);
+        if (admin != minter) {
+            _grantRole(MINTER_ROLE, minter);
+        }
         _setBaseURI(baseUri);
     }
 
