@@ -32,7 +32,7 @@ During verification on Etherscan, please ensure that the optimization is enabled
 
 ### Compiler Version
 
-The contracts in this repository were compiled using the **Solidity compiler version 0.8.20+commit.a1b79de6**.
+The contracts in this repository were compiled using the **Solidity compiler version 0.8.19+commit.7dd6d404**.
 
 ### Additional Resources
 
