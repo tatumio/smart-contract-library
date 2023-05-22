@@ -6,6 +6,6 @@
     "sol-merger": "^4.4.0"
   },
   "scripts": {
-    "build-contracts": "sol-merger \\\"src/**/*.sol\\\" ./sources-for-verification"
+    "build-contracts": "sol-merger \"src/**/*.sol\" ./sources-for-verification"
   }
 }

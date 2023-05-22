@@ -1,6 +1,6 @@
 pragma solidity ^0.8.19;
-// SPDX-License-Identifier: MIT
 
+// SPDX-License-Identifier: MIT
 
 // OpenZeppelin Contracts v4.4.1 (utils/introspection/IERC165.sol)
 /**
@@ -1910,12 +1910,29 @@ contract TatumErc721 is ERC721, ERC721URIStorage, ERC721Burnable, AccessControl,
         return _baseUri;
     }
 
+    function mintWithTokenURI(
+        address to,
+        uint256 tokenId,
+        string memory uri
+    ) public onlyRole(MINTER_ROLE) {
+        safeMint(to, tokenId, uri);
+    }
+
+
     function safeMint(address to, uint256 tokenId, string memory uri)
     public
     onlyRole(MINTER_ROLE)
     {
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+    }
+
+    function mintMultiple(
+        address[] memory to,
+        uint256[] memory tokenId,
+        string[] memory uri
+    ) public onlyRole(MINTER_ROLE) {
+        safeMintBatch(to, tokenId, uri);
     }
 
     function safeMintBatch(address[] memory to, uint256[] memory tokenId, string[] memory uri)
